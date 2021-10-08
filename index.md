@@ -1,11 +1,8 @@
 <p align="center">
-	
-<img src="https://user-images.githubusercontent.com/37185061/119641174-c1220e00-bdef-11eb-97aa-1606c9a8f417.png" width=408>
-</p>
-
-<br />
 
 ## **Engenharia Reversa em Android**
+
+</p>
 
 <p align="center">
 
