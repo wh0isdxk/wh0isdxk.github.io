@@ -1,6 +1,6 @@
 <p align="center">
 
-## **Engenharia Reversa em Android**
+## Engenharia Reversa em Android
 
 </p>
 
