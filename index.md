@@ -206,7 +206,7 @@ Teste os seguintes tipos de ataque:
 
 #
 *Obrigada por chegar até aqui! 
-Have a nice day. :sparkling_heart:*
+Have a nice day. <3*
 
 
 
