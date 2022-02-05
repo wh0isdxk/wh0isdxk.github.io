@@ -9,71 +9,24 @@
 <img src="https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif" width=300 height=300>
 
 
-</p>
+</p> 
 
+Aqui encontraremos um passo-a-passo de como realizar a Engenharia Reversa de um APK. 
 
-Neste repositório encontraremos um passo-a-passo de como realizar a Engenharia Reversa de um APK. 
+Engenharia Reversa pode nos ajudar em vários aspectos, como **identificar software ou código malicioso**, descobrir **falhas de segurança**, encontrar **funcionalidades que não eram esperadas**/quebras de regra de negócio... 
+Dito isso, vamos entrar mais a fundo sobre o universo Android. 
 
 Começando pelo básico, podemos dividir o nosso Android Package (APK) em algumas partes:  
 
+![Untitled Diagram(1)](https://user-images.githubusercontent.com/37185061/76150991-a2224980-608e-11ea-8363-558491f9adda.png)
 
-![image](https://user-images.githubusercontent.com/37185061/111375404-f5a17d00-867c-11eb-9b4a-351994709a09.png)
-
-
-**- AndroidManifest.xml**
-
-Composto por todas as permissões que a aplicação vai ter, é responsável por fazer a definição da arquitetura desse apk. Dentro dele encontramos requisição de acesso a internet, GPS, notificações e qualquer outra coisa que o aplicativo venha a necessitar, são geralmente os acessos que o aplicativo pede na hora da instalação. Além disso, encontramos informações voltadas a versionamento, nome da aplicação, requisitos mínimos para que ela funcione, componentes voltados para Receivers, Senders e Providers e componentes 
-
-Abaixo temos um exemplo do que encontramos nesse xml: 
-
-    uses-permission android:name="android.permission.INTERNET" 
-
-    uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" 
-    
-    uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
-    
-    uses-permission android:name="android.permission.VIBRATE" 
-    
-    uses-permission android:name="android.permission.WAKE_LOCK" 
-    
-    uses-permission android:name="com.android.vending.BILLING" 
-    
- Note que, em diversas aplicações, várias requisições de permissões são feitas mesmo que o app em si não necessite de tais funções. 
- 
- <br />
-
-**- META-INF/**
-
-Essa pasta contém dados relacionados ao Manifest e outros metadatas carregados pelo arquivo .jar.
-
-Dentro dele encontraremos os seguintes arquivos: 
-
-	- MANIFEST.MF: versão do pacote, número da compilação, criador, etc. 
-	- CERT.SF: Nesse doc encontramos a lista de todos os arquivos junto com o resumo do SHA-1.
-	- CERT.RSA: Aqui temos o conteúdo assinado do arquivo CERT.SF, juntamente com os certificados da chave pública usada para assinatura. 
-	
-<br />
-
-
-**- classes.dex**
-
-Quando descompilamos o apk, no .dex teremos todas as classes java que estão presentes no código do aplicativo. Esses arquivos são os exexutados pelo DVM (Dalvik Virtual Machine)e não inclui os recursos, que são mantidos separadamente na pasta /res. 
-
-Caso você decida modificar esse arquivo, estará alterando o comportamento dos programas; se excluir, ele deixará de ter um código executável. 
-
-<br />
-
-**- lib/**
-
-Composto pelas bibliotecas nativas da aplicação. 
-
-<br />
-
-**- assets/**
-
-Carregam consigo bibliotecas adicionais e outros arquivos que possam ser necessários para o App. 
-
-<br />
+- [AndroidManifest.xml](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#androidmanifestxml)
+- [META-INF/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#meta-inf)
+- [classes.dex](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#classesdex)
+- [lib/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#lib)
+- [assets/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#assets)
+- [res/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#res)
+- [resources.arcs](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#resourcesarcs)
 
 
 ### Smali/Baksmali 
@@ -96,9 +49,14 @@ A termos de código, vamos dar uma olhada na diferença entre Java e Smali:
 	invoke-virtual {v0,v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 	return-void
     .end method
+    
+    
+## Componentes da Aplicação 
 
-Tools: 
-Apktool 
+- [Activities](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#activities)
+- [Services](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#services)
+- [Content Providers](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#content-providers)
+- [Broadcast Receivers](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#broadcast-receivers)
 
 ### Avengers, disassemble! 
 
@@ -137,43 +95,29 @@ Use o JD-GUI para extrair o código-fonte do arquivo jar.
 	- Arraste o arquivo classes-dex2jar.jar pro JD-GUI
 
 
-# Dynamic Analysis 
-
-
-
 ## Tools 
 
-- Mobsf 
+#### Builders 
 
-Mobile Security Framework (https://github.com/MobSF) é uma ferramenta que automatiza a análise de APKs. 
-Dentro dela conseguimos mais detalhes sobre as partes que compoẽm os APKs, e que vimos anteriormente. 
+- Android Studio 
 
-- dex2jar 
-
-- dedexer
-
-- apktool 
-
-O apktool é uma ferramenta Java opensource para engenharia reversa de aplicações Android.
-Ele pode decodificar arquivos APK para o seu código original em um XML legível por humanos. Também dividindo todas as classes
-e métodos contidos no arquivo em Smali. Dessa forma, você é capaz de modificar recursos ou as execuções do programa. Utilizando o código Smali, você pode adicionar novas funcionalidades dentro dessa aplicação ou alterar o comportamento esperado. 
+#### Breakers 
 
 - Frida 
+- Burp Suite 
+- dex2jar 
+- droxer 
+- apktool 
+- adb
 
-Usado comumente para SSL Pinning. 
+#### Static Analysis 
 
-- adb (Android Debug Bridge) 
+- [MobSF](https://github.com/MobSF)
 
-- androguard 
-
-- Xposed Framework 
-
-Comandos: //soon
-
-
-# Static Analysis 
+#### Dynamic Analysis 
 
 - Mobsf 
+
 
 ### Bypass Root Detection and SSL Pinning 
 
@@ -207,28 +151,62 @@ Deixo aqui, uma lista com alguns labs que você pode usar como exercício:
 * [Purposefully Insecure and Vulnerable Android Application (PIIVA)](https://github.com/htbridge/pivaa)
 * [Sieve app](https://github.com/mwrlabs/drozer/releases/download/2.3.4/sieve.apk)
 
+### Recomendações 
+
+Teste os seguintes tipos de ataque: 
+
+* Broken crypto
+* Insecure data storage
+* Poor authentication
+* Untrusted input
+* Reverse engineering
+* Weak server-side controls
+* Client side injection
+* Content provider leakage
+* Unintended Data Leakage
+* Usage of weak Initialization Vector
+* Man-In-The-Middle Attack
+* Remote URL load in WebView
+* Object deserialization
+* SQL injection
+* Missing tapjacking protection
+* Enabled Application Backup
+* Enabled Debug Mode
+* Weak encryptionvHardcoded encryption keys
+* Dynamic load of codevCreation of world readable or writable files
+* Usage of unencrypted HTTP protocol
+* Weak hashing algorithms
+* Predictable Random Number Generator
+* Exported Content Providers with insufficient protection
+* Exported Broadcast Receivers
+* Exported ServicesvJS enabled in a WebView
+* Deprecated setPluginState in WebView
+* Hardcoded data
+* Untrusted CA acceptance
+* Usage of banned API functions
+* Self-signed CA enabled in WebView
+* Path Traversal
+* Cleartext SQLite database
+* Temporary file creation
+
 
 # Books 
 
-- Android Hacker's Handbook
-
-- The Mobile Application Hacker’s Handbook
-
-- Android Security Internals
-
-
-.
-.
-.
-
-Obrigada por chegar até aqui! 
-
-Have a nice day. <3 
+- [Android Hacker's Handbook](https://www.amazon.com.br/Android-Hackers-Handbook-Joshua-Drake/dp/111860864X/ref=sr_1_1?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-1&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
+- [The Mobile Application Hacker’s Handbook](https://www.amazon.com.br/Mobile-Application-Hacker%E2%80%B2s-Handbook/dp/1118958500/ref=sr_1_2?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-2&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
+- [Android Security Internals](https://www.amazon.com.br/Android-Security-Internals-Depth-Architecture/dp/1593275811/ref=sr_1_4?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-4&ufe=app_do%3Aamzn1.fos.e05b01e0-91a7-477e-a514-15a32325a6d6)
+- [Android Security Cookbook](https://www.amazon.com.br/Android-Security-Cookbook-Keith-Makan/dp/1782167161/ref=sr_1_1?keywords=android+security&qid=1644028398&s=books&sprefix=android+sec%2Cstripbooks%2C190&sr=1-1&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
+- [Android Security Attacks and Defenses](https://www.amazon.com.br/Android-Security-Defenses-Anmol-Misra/dp/1439896461/ref=sr_1_4?keywords=android+security&qid=1644028398&s=books&sprefix=android+sec%2Cstripbooks%2C190&sr=1-4&ufe=app_do%3Aamzn1.fos.6121c6c4-c969-43ae-92f7-cc248fc6181d)
 
 
-[Interceptando o Tráfego das Requisições em Android](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/InterceptacaoDeTrafego.md)
+### Links Interessantes
 
-[Bypassing SSL Pinning](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/SSLPinning.md)
+- [Interceptando o Tráfego das Requisições em Android](https://github.com/wh0isdxk/AndroidRE/blob/master/Interceptacao.md)
+- [Bypassing SSL Pinning](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/SSLPinning.md)
+
+#
+*Obrigada por chegar até aqui! 
+Have a nice day. :sparkling_heart:*
 
 
 
