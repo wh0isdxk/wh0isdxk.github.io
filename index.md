@@ -1,8 +1,4 @@
-<p align="center">
-
 # Engenharia Reversa em Android
-
-</p>
 
 <p align="center">
 
