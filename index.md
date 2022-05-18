@@ -8,7 +8,6 @@
 
 <img src="https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif" width=300 height=300>
 
-
 </p> 
 
 Aqui encontraremos um passo-a-passo de como realizar a Engenharia Reversa de um APK. 
