@@ -1,3 +1,12 @@
+[![android](https://user-images.githubusercontent.com/37185061/175793953-11b5166d-f51a-4ed5-a8ad-15cccafa5f9f.png)](https://github.com/wh0isdxk/AndroidRevEngineering)
+
+[![desevsec](https://user-images.githubusercontent.com/37185061/175793956-496ac3a8-fd92-46cb-aa85-4d363ca69934.png)](https://github.com/wh0isdxk/DesenvolvimentoSeguro)
+
+[![nutshell](https://user-images.githubusercontent.com/37185061/175793962-bdcf2939-b484-4b06-9288-da6b2b189288.png)](https://github.com/wh0isdxk/InfosecInANutshell)
+
+
+
+
 # Engenharia Reversa em Android
 
 <p align="center">
