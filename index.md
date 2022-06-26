@@ -1,17 +1,20 @@
 # Mobile Hacking - Roadsec 2022
 
 ### Conceitos utilizados 
-- Client Side 
-- Server Side
 
+> Client Side: Um cliente é um programa, ou máquina, que envia solicitações para servidores.
+
+> Server Side: Um servidor é um programa, ou máquina, que aguarda as solicitações.
+
+![image](https://user-images.githubusercontent.com/37185061/175831164-09648fca-f505-4ae5-b84e-eadd0e864c88.png)
 
 ### Ferramentas 
 [MobSF link](https://mobsf.github.io/)
 
 ### Referências
-Hacking Android 
-Mobile App Reverse Engineer 
-Awesome Mobile Hacking 
+- Hacking Android 
+- Mobile App Reverse Engineer 
+- Awesome Mobile Hacking 
 
 ### Materiais Complementares 
 
