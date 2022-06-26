@@ -1,3 +1,19 @@
+# Mobile Hacking - Roadsec 2022
+
+### Conceitos utilizados 
+- Client Side 
+- Server Side
+
+
+### Ferramentas 
+[MobSF link](https://mobsf.github.io/)
+
+### Referências
+Hacking Android 
+Mobile App Reverse Engineer 
+Awesome Mobile Hacking 
+
+### Materiais Complementares 
 
 
 [![android1](https://user-images.githubusercontent.com/37185061/175828137-0d7e48f0-77a0-4ef3-85ff-28f1fe722adc.png)](https://github.com/wh0isdxk/AndroidRevEngineering)[![developsec1](https://user-images.githubusercontent.com/37185061/175828232-6dda3fd1-e9ee-4ea3-b862-5f335b335695.png)](https://github.com/wh0isdxk/DesenvolvimentoSeguro)[![nutshell1](https://user-images.githubusercontent.com/37185061/175828140-4505c986-191b-4c92-9f51-0345837e2ceb.png)](https://github.com/wh0isdxk/InfosecInANutshell)
