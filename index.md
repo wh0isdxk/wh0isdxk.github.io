@@ -1,11 +1,4 @@
-[![android](https://user-images.githubusercontent.com/37185061/175793953-11b5166d-f51a-4ed5-a8ad-15cccafa5f9f.png)](https://github.com/wh0isdxk/AndroidRevEngineering)
-
-[![desevsec](https://user-images.githubusercontent.com/37185061/175793956-496ac3a8-fd92-46cb-aa85-4d363ca69934.png)](https://github.com/wh0isdxk/DesenvolvimentoSeguro)
-
-[![nutshell](https://user-images.githubusercontent.com/37185061/175793962-bdcf2939-b484-4b06-9288-da6b2b189288.png)](https://github.com/wh0isdxk/InfosecInANutshell)
-
-
-
+[![android1](https://user-images.githubusercontent.com/37185061/175794441-57987c1c-c396-4ce7-8139-4cf08955577a.png)](https://github.com/wh0isdxk/AndroidRevEngineering)[![developsec1](https://user-images.githubusercontent.com/37185061/175794449-f0b80a3a-4197-4efe-a2c5-83c2d3a01fa3.png)](https://github.com/wh0isdxk/DesenvolvimentoSeguro)[![nutshell1](https://user-images.githubusercontent.com/37185061/175794454-c09f62a3-9c37-40fd-b338-c2a97f2063fc.png)](https://github.com/wh0isdxk/InfosecInANutshell)
 
 # Engenharia Reversa em Android
 
