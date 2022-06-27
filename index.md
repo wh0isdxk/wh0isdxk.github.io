@@ -2,11 +2,12 @@
 
 ### Conceitos utilizados 
 
-> Client Side: Um cliente é um programa, ou máquina, que envia solicitações para servidores.
+- Client Side: Um cliente é um programa, ou máquina, que envia solicitações para servidores.
 
-> Server Side: Um servidor é um programa, ou máquina, que aguarda as solicitações.
+- Server Side: Um servidor é um programa, ou máquina, que aguarda as solicitações.
 
 ![image](https://user-images.githubusercontent.com/37185061/175831164-09648fca-f505-4ae5-b84e-eadd0e864c88.png)
+- OWASP:
 
 ### Ferramentas 
 [MobSF link](https://mobsf.github.io/)
