@@ -9,6 +9,16 @@
 ![image](https://user-images.githubusercontent.com/37185061/175831164-09648fca-f505-4ae5-b84e-eadd0e864c88.png)
 - OWASP:
 
+- Mobile Reversing Tip 
+
+
+
+https://user-images.githubusercontent.com/37185061/176324612-4b6dd6ff-8bb7-40f1-8fd3-4b9a6950fdaf.mp4
+
+
+
+
+
 ### Ferramentas 
 [MobSF link](https://mobsf.github.io/)
 
