@@ -1,5 +1,9 @@
 # Mobile Hacking - Roadsec 2022
 
+## Palestra Completa 
+
+[Acesse Aqui :)](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Talks/Roadsec2022.md)
+
 ### Conceitos utilizados 
 
 - Client Side: Um cliente é um programa, ou máquina, que envia solicitações para servidores.
