@@ -1,3 +1,10 @@
+# AppSec Roadmap
+
+![Image from iOS (9)](https://user-images.githubusercontent.com/37185061/180645863-9df66c23-0d5c-4e6f-871d-1a68a8fabd8d.jpg)
+
+## Notion com materiais recomendados 
+
+
 # Mobile Hacking - Roadsec 2022
 
 ## Palestra Completa 
