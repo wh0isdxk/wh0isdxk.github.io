@@ -6,7 +6,7 @@
 
 </p>
 
-Quando falamos sobre a Arquitetura de Segurança de dispositivos iOS, podemos mencionar sete ferramentas que auxiliam na proteção dos mesmos. 
+Quando falamos sobre a Arquitetura de Segurança de dispositivos iOS, podemos mencionar seis ferramentas que auxiliam na proteção dos mesmos. 
 
 ## Assinatura de Código
 
@@ -27,6 +27,35 @@ Nesse caso, para o atacante escalar o acesso precisaria de uma outra aplicação
 Um dos principais pontos que sempre é discutido quando falamos de Apple, é o seu sistema mais "fechado". Com isso, podemos ja deduzir que, de certa forma, o seu ambiente também possui uma **menor superfície de ataque**.
 
 O iOS não executa determinados tipos de arquivos, mas o MacOS X sim. Um exemplo disso são os arquivos .psd. Eles são executáveis comumente no Safari mas não no Safari Mobile, e isso acontece com uma série de arquivos e raramente notamos algo assim.
+
+## Sandbox
+
+A Apple utiliza esse recurso, já conhecido por ser um processo que garante um certo nível de segurança, para colocar todas as aplicações de terceiro e fazer com que sejam executados por esse modo, ou seja, apps de terceiros funcionam em sandbox, de modo que não possam acessar arquivos armazenados por outros apps ou realizar alterações nos dispositivos. 
+
+Caso esses aplicativos precisem de uma determinada informação proveniente de outra aplicação, ele usará os serviços fornecidos pelo próprio iOS/iPad OS. Isso é notado quando pedimos recebemos a notificação do app, de compartilhar ou não, os dados com o aplicativo. 
+
+## Data Execution Prevention (DEP)
+
+Data Execution Prevention é um mecanismo onde, normalmente, o processador é capaz de diferir quais partes da memória são compostos por dados e quais partes são formadas por códigos executáveis, geralmente não permitindo a execução de dados, só do código. 
+
+Quando um exploit está tentando executar um payload, ele tentaria injetá-lo no processo e então executá-lo. o DEP faz isso ser impossível, uma vez que ele reconhece o payload como um dado e não como código. 
+
+A forma como atacantes tentam bypassar esse recurso é realizando Programação Orientada a Retorno (ROP), onde são reutilizados trechos de código válidos e existentes (diferentes da maneira que são utilizados) para realizar as ações desejadas. 
+
+## Address Space Layout Randomization (ASLR)
+
+No trecho anterior, mencionamos como o ROP funciona e, para que o atacante consiga executá-lo, precisaria de informações sobre trechos do código. O Address Space Layout Randomization faz com que a localização de objetos na memória seja randomizada, de modo que fique mais difícil para um atacante saber onde esses trechos estão localizados. 
+
+Conforme discutido na seção anterior, a maneira como os invasores tentam contornar a DEP é reutilizar os trechos de código (ROP) existentes. No entanto, para fazer isso, eles precisam saber onde estão localizados os segmentos de código que desejam reutilizar. A randomização de layout de espaço de endereço (ASLR) dificulta isso ao randomizar a localização de objetos na memória.
+
+No sistema iOS, localização de binários, bibliotecas, dynamic links, pilhas e endereços de memória são todos aleatórios. Quando um sistemas têm DEP e ASLR, não há uma maneira simplória de escrever um exploit voltado à ele e o atacante precisa atribuir uma quantidade de tempo considerável nisso. 
+
+---
+
+#### Referências: 
+iOS Hackers Handbook 
+
+Apple - Site Oficial
 
 
 
