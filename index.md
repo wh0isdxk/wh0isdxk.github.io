@@ -2,8 +2,8 @@
 
 <p align="center">
 	
-![](https://cdn-images-1.medium.com/max/640/1*8IBTekrtpUvI6my1IFP1GA.gif)
-	
+<img align="center" src="https://cdn-images-1.medium.com/max/640/1*8IBTekrtpUvI6my1IFP1GA.gif"/>
+
 </p>
 
 Quando falamos sobre a Arquitetura de Segurança de dispositivos iOS, podemos mencionar sete ferramentas que auxiliam na proteção dos mesmos. 
