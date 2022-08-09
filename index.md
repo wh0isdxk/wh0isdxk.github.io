@@ -8,7 +8,7 @@
 
 Quando falamos sobre a Arquitetura de Segurança de dispositivos iOS, podemos mencionar sete ferramentas que auxiliam na proteção dos mesmos. 
 
-## Code Signing
+## Assinatura de Código
 
 O primeiro dos métodos que vamos ver é o de Code Signing utilizado pela Apple, ele permite fazer uma **validação da autenticidade das aplicações** de terceiros, o que faz com que sejam liberadas apenas as aplicações provenientes da App Store e, também, que o **Kernel permita a execução apenas de aplicações assinadas**. 
 
@@ -22,7 +22,7 @@ O sistema separa utilizando usuários, grupos, e outros mecanismos de permissão
 Como exemplo, várias aplicações onde o usuário tem acesso direto, como browser, serviços de e-mail e similares, rodam com o usuário MOBILE. 
 Nesse caso, para o atacante escalar o acesso precisaria de uma outra aplicação que possua o usuário ROOT.
 
-## An Reduced Attack Surface/Uma Superfície de Ataque Reduzida
+## Menor Superfície de Ataque
 
 Um dos principais pontos que sempre é discutido quando falamos de Apple, é o seu sistema mais "fechado". Com isso, podemos ja deduzir que, de certa forma, o seu ambiente também possui uma **menor superfície de ataque**.
 
