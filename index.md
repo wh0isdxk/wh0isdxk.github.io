@@ -1,252 +1,41 @@
-# AppSec Roadmap
+# Segurança em Dispositivos iOS 
 
-![Image from iOS (9)](https://user-images.githubusercontent.com/37185061/180645863-9df66c23-0d5c-4e6f-871d-1a68a8fabd8d.jpg)
+<p align="center">
+	
+![](https://cdn-images-1.medium.com/max/640/1*8IBTekrtpUvI6my1IFP1GA.gif)
+	
+</p>
 
-## Notion com materiais recomendados 
+Quando falamos sobre a Arquitetura de Segurança de dispositivos iOS, podemos mencionar sete ferramentas que auxiliam na proteção dos mesmos. 
 
+## Code Signing
 
-# Mobile Hacking - Roadsec 2022
+O primeiro dos métodos que vamos ver é o de Code Signing utilizado pela Apple, ele permite fazer uma **validação da autenticidade das aplicações** de terceiros, o que faz com que sejam liberadas apenas as aplicações provenientes da App Store e, também, que o **Kernel permita a execução apenas de aplicações assinadas**. 
 
-## Palestra Completa 
+Podemos ver um exemplo disso quando realizamos Jailbreak em um dispositivo. A única forma de rodar um app modificado sem passar por todo o processo que inclui a assinatura, é instalando em um dispositivo jailbroke. De forma convencional e sem esse "root", a única forma de testar um aplicativo é em simuladores como o Test Flight. 
 
-[Acesse Aqui :)](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Talks/Roadsec2022.md)
+## Segregação de Privilégios 
 
-### Conceitos utilizados 
+Um outro ponto bem interessante e importante para a segurança no geral, é a segregação de privilégios ou seja, a gestão de privilégios e acessos. **Definir os privilégios que são necessários de acordo com cada role, e evitar que serviços tenham acessos mais altos**, como admin, sem necessidade.Dessa forma, deixando somente serviços mais importantes como ROOT.
+O sistema separa utilizando usuários, grupos, e outros mecanismos de permissão de arquivos do próprio UNIX.
 
-- Client Side: Um cliente é um programa, ou máquina, que envia solicitações para servidores.
+Como exemplo, várias aplicações onde o usuário tem acesso direto, como browser, serviços de e-mail e similares, rodam com o usuário MOBILE. 
+Nesse caso, para o atacante escalar o acesso precisaria de uma outra aplicação que possua o usuário ROOT.
 
-- Server Side: Um servidor é um programa, ou máquina, que aguarda as solicitações.
+## An Reduced Attack Surface/Uma Superfície de Ataque Reduzida
 
-![image](https://user-images.githubusercontent.com/37185061/175831164-09648fca-f505-4ae5-b84e-eadd0e864c88.png)
-- OWASP:
+Um dos principais pontos que sempre é discutido quando falamos de Apple, é o seu sistema mais "fechado". Com isso, podemos ja deduzir que, de certa forma, o seu ambiente também possui uma **menor superfície de ataque**.
 
-- Mobile Reversing Tip 
-
-
-
-https://user-images.githubusercontent.com/37185061/176324612-4b6dd6ff-8bb7-40f1-8fd3-4b9a6950fdaf.mp4
-
+O iOS não executa determinados tipos de arquivos, mas o MacOS X sim. Um exemplo disso são os arquivos .psd. Eles são executáveis comumente no Safari mas não no Safari Mobile, e isso acontece com uma série de arquivos e raramente notamos algo assim.
 
 
 
 
-### Ferramentas 
-[MobSF link](https://mobsf.github.io/)
-
-### Referências
-- Hacking Android 
-- Mobile App Reverse Engineer 
-- Awesome Mobile Hacking 
-
-### Materiais Complementares 
+### Outros materiais:  
 
 
 [![android1](https://user-images.githubusercontent.com/37185061/175828137-0d7e48f0-77a0-4ef3-85ff-28f1fe722adc.png)](https://github.com/wh0isdxk/AndroidRevEngineering)[![developsec1](https://user-images.githubusercontent.com/37185061/175828232-6dda3fd1-e9ee-4ea3-b862-5f335b335695.png)](https://github.com/wh0isdxk/DesenvolvimentoSeguro)[![nutshell1](https://user-images.githubusercontent.com/37185061/175828140-4505c986-191b-4c92-9f51-0345837e2ceb.png)](https://github.com/wh0isdxk/InfosecInANutshell)
 
-# Engenharia Reversa em Android
-
-<p align="center">
-
-<img src="https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif" width=300 height=300>
-
-</p> 
-
-Aqui encontraremos um passo-a-passo de como realizar a Engenharia Reversa de um APK. 
-
-Engenharia Reversa pode nos ajudar em vários aspectos, como **identificar software ou código malicioso**, descobrir **falhas de segurança**, encontrar **funcionalidades que não eram esperadas**/quebras de regra de negócio... 
-Dito isso, vamos entrar mais a fundo sobre o universo Android. 
-
-Começando pelo básico, podemos dividir o nosso Android Package (APK) em algumas partes:  
-
-![Untitled Diagram(1)](https://user-images.githubusercontent.com/37185061/76150991-a2224980-608e-11ea-8363-558491f9adda.png)
-
-- [AndroidManifest.xml](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#androidmanifestxml)
-- [META-INF/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#meta-inf)
-- [classes.dex](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#classesdex)
-- [lib/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#lib)
-- [assets/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#assets)
-- [res/](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#res)
-- [resources.arcs](https://github.com/wh0isdxk/AndroidRevEngineering/new/master#resourcesarcs)
-
-
-### Smali/Baksmali 
-
-O Smali é a versão human readable do Dalvik bytecode, simplificando, funciona como um assemble/disassemble. Dalvik Executable format (.dex)
-
-
-A termos de código, vamos dar uma olhada na diferença entre Java e Smali:  
-
-    public static void printHelloWorld() {
-	System.out.println("Hello World")
-    }
-    
-  E o nosso mesmo código em Smali: 
-  
-    .method public static printHelloWorld()V
-	.registers 2
-	sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;
-	const-string v1, "Hello World"
-	invoke-virtual {v0,v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-	return-void
-    .end method
-    
-    
-## Componentes da Aplicação 
-
-- [Activities](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#activities)
-- [Services](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#services)
-- [Content Providers](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#content-providers)
-- [Broadcast Receivers](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/Conceitos.md#broadcast-receivers)
-
-### Avengers, disassemble! 
-
-Passamos pelos conceitos básicos necessários e agora mãos a obra! 
-
-Passo 1: 
-
-Escolha o APK que você deseja fazer o Reversing. 
-
-Se você não encontrá-lo facilmente pela própria loja de aplicativos, pode fazer diretamente em sites como APKCombo ou APKMonk. 
-
-Chegando aqui, atente-se para algumas coisas que podem ser interessantes: 
-
-	- Qual é o URL da API?  (geralmente emos algo como api.domain.com)
-   	- Qual é método de autenticação utilizado? Eu preciso criar um login para acessar? 
-  	- Quais são as chamadas que eu posso encontrar e quais são os parâmetros eles esperam?
- 
- Uma vez que temos o APK, é hora de fazer a descompilação do mesmo, para que possamos realizar a análise do código. 
- 
- (Ferramentas de Análise Dinâmica como o MOBSF permitem que você já consiga realizar o download do código diretamente, sendo ele em Java ou SMALI). 
-
-Agora vamos usar ferramentas, a primeira delas é o APKTOOL, você verá mais detalhes sobre ela abaixo, mas de uma forma geral ela vai ser responsável por descompiilar os arquivos, criando uma pasta, no mesmo lugar, com todos os arquivos descomplilados. A partir daqui, você conseguirá analisar todos os códigos necessarios. 
-
-O comando utilizado aqui vai ser o seguinte: 
-
-	- apktool d ~/Desktop/aplicativo_app.apk
-	
-Extraindo o arquivo “classes.dex” do APK.
-
-Use a ferramenta dex2jar para converter em arquivos de classe Java. Resultando em um arquivo jar.
-
-	- sh d2j-dex2jar.sh classes.dex
-	
-Use o JD-GUI para extrair o código-fonte do arquivo jar.
-
-	- Arraste o arquivo classes-dex2jar.jar pro JD-GUI
-
-
-## Tools 
-
-#### Builders 
-
-- Android Studio 
-
-#### Breakers 
-
-- Frida 
-- Burp Suite 
-- dex2jar 
-- droxer 
-- apktool 
-- adb
-
-#### Static Analysis 
-
-- [MobSF](https://github.com/MobSF)
-
-#### Dynamic Analysis 
-
-- Mobsf 
-
-
-### Bypass Root Detection and SSL Pinning 
-
-- Android SSL Bypass 
-
-- Frida 
-
-# Materiais 
-
-Agora que já temos uma base de como isso funciona, é hora de praticar! 
-Deixo aqui, uma lista com alguns labs que você pode usar como exercício: 
-
-* [Damn Vulnerable Hybrid Mobile Application](https://github.com/logicalhacking/DVHMA)
-* [Android Digital Bank](https://github.com/CyberScions/Digitalbank)
-* [Damn Insecure and Vulnerable App](https://github.com/payatu/diva-android)
-* [Hackme Bank](http://www.mcafee.com/us/downloads/free-tools/hacme-bank-android.aspx)
-* [Insecure Bank](https://github.com/dineshshetty/Android-InsecureBankv2)
-* [Damn Vulnerable Android Application](https://code.google.com/archive/p/dvaa/)
-* [OWASP GoatDroid](https://github.com/jackMannino/OWASP-GoatDroid-Project)
-* [Dodo Vulnerable Bank](https://github.com/CSPF-Founder/DodoVulnerableBank)
-* [Vulnerable Android Application](https://github.com/dan7800/VulnerableAndroidAppOracle)
-* [Vulnerable Android Application - Urdu](http://urdusecurity.blogspot.co.uk/2014/08/Exploiting-debuggable-android-apps.html)
-* [MoshZuk](https://dl.dropboxusercontent.com/u/37776965/Work/MoshZuk.apk)
-* [AppKnox Vulnerable Application](https://github.com/appknox/vulnerable-application)
-* [Vulnerable Android Application](https://github.com/Lance0312/VulnApp)
-* [Security Compass Android Application](https://github.com/SecurityCompass/AndroidLabs)
-* [SecurityShepherd](https://github.com/OWASP/SecurityShepherd)
-* [owasp-mstg](https://github.com/OWASP/owasp-mstg/tree/master/Crackmes)
-* [VulnerableAndroidAppOracle](https://github.com/dan7800/VulnerableAndroidAppOracle)
-* [Android InsecureBankv2](https://github.com/dineshshetty/Android-InsecureBankv2)
-* [Purposefully Insecure and Vulnerable Android Application (PIIVA)](https://github.com/htbridge/pivaa)
-* [Sieve app](https://github.com/mwrlabs/drozer/releases/download/2.3.4/sieve.apk)
-
-### Recomendações 
-
-Teste os seguintes tipos de ataque: 
-
-* Broken crypto
-* Insecure data storage
-* Poor authentication
-* Untrusted input
-* Reverse engineering
-* Weak server-side controls
-* Client side injection
-* Content provider leakage
-* Unintended Data Leakage
-* Usage of weak Initialization Vector
-* Man-In-The-Middle Attack
-* Remote URL load in WebView
-* Object deserialization
-* SQL injection
-* Missing tapjacking protection
-* Enabled Application Backup
-* Enabled Debug Mode
-* Weak encryptionvHardcoded encryption keys
-* Dynamic load of codevCreation of world readable or writable files
-* Usage of unencrypted HTTP protocol
-* Weak hashing algorithms
-* Predictable Random Number Generator
-* Exported Content Providers with insufficient protection
-* Exported Broadcast Receivers
-* Exported ServicesvJS enabled in a WebView
-* Deprecated setPluginState in WebView
-* Hardcoded data
-* Untrusted CA acceptance
-* Usage of banned API functions
-* Self-signed CA enabled in WebView
-* Path Traversal
-* Cleartext SQLite database
-* Temporary file creation
-
-
-# Books 
-
-- [Android Hacker's Handbook](https://www.amazon.com.br/Android-Hackers-Handbook-Joshua-Drake/dp/111860864X/ref=sr_1_1?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-1&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
-- [The Mobile Application Hacker’s Handbook](https://www.amazon.com.br/Mobile-Application-Hacker%E2%80%B2s-Handbook/dp/1118958500/ref=sr_1_2?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-2&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
-- [Android Security Internals](https://www.amazon.com.br/Android-Security-Internals-Depth-Architecture/dp/1593275811/ref=sr_1_4?keywords=android+hackers+handbook&qid=1644028298&sprefix=android+hacker%2Caps%2C189&sr=8-4&ufe=app_do%3Aamzn1.fos.e05b01e0-91a7-477e-a514-15a32325a6d6)
-- [Android Security Cookbook](https://www.amazon.com.br/Android-Security-Cookbook-Keith-Makan/dp/1782167161/ref=sr_1_1?keywords=android+security&qid=1644028398&s=books&sprefix=android+sec%2Cstripbooks%2C190&sr=1-1&ufe=app_do%3Aamzn1.fos.25548f35-0de7-44b3-b28e-0f56f3f96147)
-- [Android Security Attacks and Defenses](https://www.amazon.com.br/Android-Security-Defenses-Anmol-Misra/dp/1439896461/ref=sr_1_4?keywords=android+security&qid=1644028398&s=books&sprefix=android+sec%2Cstripbooks%2C190&sr=1-4&ufe=app_do%3Aamzn1.fos.6121c6c4-c969-43ae-92f7-cc248fc6181d)
-
-
-### Links Interessantes
-
-- [Interceptando o Tráfego das Requisições em Android](https://github.com/wh0isdxk/AndroidRE/blob/master/Interceptacao.md)
-- [Bypassing SSL Pinning](https://github.com/wh0isdxk/AndroidRevEngineering/blob/master/SSLPinning.md)
-
-#
-*Obrigada por chegar até aqui! 
-Have a nice day. <3*
 
 
 
