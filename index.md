@@ -34,6 +34,13 @@ A Apple utiliza esse recurso, já conhecido por ser um processo que garante um c
 
 Caso esses aplicativos precisem de uma determinada informação proveniente de outra aplicação, ele usará os serviços fornecidos pelo próprio iOS/iPad OS. Isso é notado quando pedimos recebemos a notificação do app, de compartilhar ou não, os dados com o aplicativo. 
 
+<p align="center">
+	
+<img align="center" src="https://miro.medium.com/max/1180/1*ooXUC2xEKRdR2UioYNlOww.png"/>
+
+</p>
+
+
 ## Data Execution Prevention (DEP)
 
 Data Execution Prevention é um mecanismo onde, normalmente, o processador é capaz de diferir quais partes da memória são compostos por dados e quais partes são formadas por códigos executáveis, geralmente não permitindo a execução de dados, só do código. 
